@@ -1,0 +1,53 @@
+{% extends 'menu/base_list.html' %}
+
+{% block table_actions %}
+    <a href="{% url 'veiculo:create' %}" class="btn btn-brand btn-elevate btn-icon-sm">
+        <i class="la la-plus"></i>
+        Novo veículo
+    </a>
+{% endblock %}
+
+{% block grid_header %}
+    <th class="text-center">
+        <span>N° placa</span>
+    </th>
+    <th class="text-center">
+        <span>Marca</span>
+    </th>
+    <th class="text-center">
+        <span>Veículo</span>
+    </th>
+    <th class="text-center">
+        <span>Quilometros até a próx. troca</span>
+    </th>
+    <th class="text-center">
+        <span>Ações</span>
+    </th>
+{% endblock %}
+
+{% block grid_item %}
+    <td class="text-center">{{ item.placa }}</td>
+    <td class="text-center">{{ item.marca }}</td>
+    <td class="text-center">{{ item.veiculo }}</td>
+    <td class="text-center">{{ item.km_troca_oleo }}</td>
+    <td class="text-center">
+        <a href="{% url 'veiculo:detail' item.id %}" class="btn btn-success btn-elevate btn-icon-sm"
+            data-toggle="kt-tooltip" data-original-title="Visualizar"
+        >
+            <i class="la la-book"></i>
+        </a>
+        <a href="{% url 'veiculo:update' item.id %}" class="btn btn-warning btn-elevate btn-icon-sm"
+            data-toggle="kt-tooltip" data-original-title="Editar"
+        >
+            <i class="la la-edit"></i>
+        </a>
+
+        <a href="#" class="btn btn-danger btn-elevate btn-icon-sm btn_action_delete"
+           url="{% url 'veiculo:delete' item.id %}"
+           descricao="{{ item.veiculo }}"
+           data-toggle="kt-tooltip" data-original-title="Excluir registro"
+        >
+            <i class="la la-trash"></i>
+        </a>
+    </td>
+{% endblock %}
