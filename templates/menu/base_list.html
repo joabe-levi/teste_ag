@@ -1,0 +1,157 @@
+{% extends 'menu/base.html' %}
+
+{% block container %}
+    <div class="kt-portlet kt-portlet--mobile">
+        <div class="kt-portlet__head kt-portlet__head--lg">
+            <div class="kt-portlet__head-label">
+                <span class="kt-portlet__head-icon">
+                    <i class="kt-font-brand flaticon2-line-chart"></i>
+                </span>
+                <h3 class="kt-portlet__head-title">
+                    Listagem de {{ title|lower }}
+                </h3>
+            </div>
+            <div class="kt-portlet__head-toolbar">
+                <div class="kt-portlet__head-wrapper">
+                    <div class="kt-portlet__head-actions">
+                        {% block table_actions %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div id="kt_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="mb-7">
+                <form method="get" id="form-search">
+                    <div class="row align-items-center">
+                        {% block search %}
+                            <div class="col-lg-9 col-xl-8">
+                                <div class="row align-items-center">
+                                    <div class="col-md-4 my-2 my-md-0">
+                                        <div class="input-icon">
+                                            <input type="text" class="form-control" name="search"
+                                                   placeholder="Buscar por..." id="search-query">
+                                            <span><i class="flaticon2-search-1 text-muted"></i></span>
+                                        </div>
+                                    </div>
+                                    <button href="#" type="submit" class="btn btn-brand btn-elevate btn-icon-sm">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+                </form>
+            </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline collapsed"
+                               id="kt_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 1543px;">
+                            <thead>
+                                <tr role="row">
+                                    {% block grid_header %}
+                                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
+                                            style="width: 183.25px;" aria-label="Ship Address: activate to sort column ascending">
+                                            Ship Address
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
+                                            style="width: 140.25px;" aria-label="Company Agent: activate to sort column ascending">
+                                            Company Agent
+                                        </th>
+                                    {% endblock %}
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for item in object_list %}
+                                <tr class="odd">
+                                    {% block grid_item %}
+                                        <td>Indonesia</td>
+                                    {% endblock %}
+                                </tr>
+                            {% empty %}
+                                <td colspan="3" class="text-center" id="td-empty">
+                                    <span>Nenhuma ocorrência a registrar.</span>
+                                </td>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-5">
+                        <div class="dataTables_info" id="kt_table_1_info" role="status" aria-live="polite">
+                            Showing 1 to 10 of 50 entries
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-7 dataTables_pager">
+                        <div class="dataTables_length" id="kt_table_1_length"><label>Display <select
+                                name="kt_table_1_length" aria-controls="kt_table_1"
+                                class="custom-select custom-select-sm form-control form-control-sm">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                        </select></label></div>
+                        <div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button page-item previous disabled" id="kt_table_1_previous">
+                                    <a href="#" aria-controls="kt_table_1" data-dt-idx="0" tabindex="0"
+                                       class="page-link">
+                                        <i class="la la-angle-left"></i>
+                                    </a>
+                                </li>
+                                <li class="paginate_button page-item active">
+                                    <a href="#" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0"
+                                       class="page-link">1
+                                    </a>
+                                </li>
+                                <li class="paginate_button page-item ">
+                                    <a href="#" aria-controls="kt_table_1" data-dt-idx="2" tabindex="0"
+                                       class="page-link">2
+                                    </a>
+                                </li>
+                                <li class="paginate_button page-item ">
+                                    <a href="#" aria-controls="kt_table_1" data-dt-idx="3" tabindex="0"
+                                       class="page-link">3
+                                    </a>
+                                </li>
+                                <li class="paginate_button page-item ">
+                                    <a href="#" aria-controls="kt_table_1" data-dt-idx="4" tabindex="0"
+                                       class="page-link">4
+                                    </a>
+                                </li>
+                                <li class="paginate_button page-item ">
+                                    <a href="#" aria-controls="kt_table_1" data-dt-idx="5" tabindex="0"
+                                       class="page-link">5
+                                    </a>
+                                </li>
+                                <li class="paginate_button page-item next" id="kt_table_1_next">
+                                    <a href="#" aria-controls="kt_table_1" data-dt-idx="6" tabindex="0"
+                                       class="page-link">
+                                        <i class="la la-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    {{ block.super }}
+    <script>
+        function _setLenColSpan() {
+            $('#td-empty').attr('colspan', $('.row').length);
+        }
+
+        $(document).ready(function () {
+            _setLenColSpan()
+        })
+
+    </script>
+{% endblock %}
