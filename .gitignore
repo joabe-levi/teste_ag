@@ -1,0 +1,5 @@
+BancoAgSistemas/.env
+.venv
+staticfiles
+db.sqlite3
+.idea
