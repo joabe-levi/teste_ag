@@ -1,0 +1,50 @@
+{% extends 'menu/base_detail.html' %}
+{% load static %}
+
+{% block container %}
+    <div class="kt-portlet kt-portlet--height-fluid">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                    {{ title_detail|default:'Detalhes' }}
+                </h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="tab-content">
+                <div class="tab-pane active" id="kt_widget5_tab1_content" aria-expanded="true">
+                    <div class="kt-widget5">
+                        <div class="kt-widget5__item">
+                            <div class="kt-widget5__content">
+                                <div class="kt-widget5__pic">
+                                    <!--                                <img class="kt-widget7__img" src="./assets/media//products/product27.jpg" alt="">-->
+                                </div>
+
+                                <div class="kt-widget5__section">
+                                    <a href="#" class="kt-widget5__title">
+                                        Veiculo: {{ object.veiculo }}
+                                    </a>
+                                    <p class="kt-widget5__desc">
+                                        Motorista responsável: {{ object.motorista.nome }}
+                                    </p>
+                                    <div class="kt-widget5__info">
+                                        <span>Km percorridos:</span>
+                                        <span class="kt-font-info">{{ object.km_percorrido }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kt-widget5__content">
+                                <div class="kt-widget5__stats">
+                                    <span class="kt-widget5__number">Data Prevista para entrega</span>
+                                    <span class="kt-widget5__sales">{{ object.data_retorno }} as {{ object.hora_retorno }}</span>
+                                </div>
+                                <div class="kt-widget5__stats">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

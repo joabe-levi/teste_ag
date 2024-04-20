@@ -1,0 +1,89 @@
+{% extends 'menu/base_list.html' %}
+
+{% block table_actions %}
+    <a href="{% url 'controle-veiculo:create' %}" class="btn btn-brand btn-elevate btn-icon-sm">
+        <i class="la la-plus"></i>
+        Novo Controle de Veículo
+    </a>
+{% endblock %}
+
+{% block search %}
+    <div class="col-lg-9 col-xl-8">
+        <div class="row align-items-center">
+            <div class="col-md-4 my-2 my-md-0">
+                <div class="input-icon">
+                    <input type="text" class="form-control" name="search" placeholder="Buscar por..." id="search-query">
+                    <span><i class="flaticon2-search-1 text-muted"></i></span>
+                </div>
+            </div>
+            <a href="#" class="btn btn-brand btn-elevate btn-icon-sm">
+                Search
+            </a>
+            <div class="col-md-3" style="padding-right: 0;">
+                <div class="kt-widget__details">
+                    <input type="date" name="data" class="form-control" id="id-data">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block grid_header %}
+    <th class="text-center">
+        <span>Veiculo</span>
+    </th>
+    <th class="text-center">
+        <span>Motorista</span>
+    </th>
+
+    <th class="text-center">
+        <span>Data de saída</span>
+    </th>
+    <th class="text-center">
+        <span>Data prevista para chegada</span>
+    </th>
+    <th class="text-center">
+        <span>Ações</span>
+    </th>
+{% endblock %}
+
+{% block grid_item %}
+    <td class="text-center">{{ item.veiculo }}</td>
+    <td class="text-center">{{ item.motorista }}</td>
+    <td class="text-center">{{ item.data_saida }} as {{ item.hora_saída }}</td>
+    <td class="text-center">{{ item.data_retorno }} as {{ item.hora_retorno }}</td>
+
+    <td class="text-center">
+        <a href="{% url 'controle-veiculo:detail' item.id %}" class="btn btn-success btn-elevate btn-icon-sm"
+            data-toggle="kt-tooltip" data-original-title="Visualizar"
+        >
+            <i class="la la-book"></i>
+        </a>
+        <a href="{% url 'controle-veiculo:update' item.id %}" class="btn btn-warning btn-elevate btn-icon-sm"
+            data-toggle="kt-tooltip" data-original-title="Editar"
+        >
+            <i class="la la-edit"></i>
+        </a>
+
+        <a href="#" class="btn btn-danger btn-elevate btn-icon-sm btn_action_delete"
+           url="{% url 'controle-veiculo:delete' item.id %}"
+           descricao="{{ item.veiculo }}"
+           data-toggle="kt-tooltip" data-original-title="Excluir registro"
+        >
+            <i class="la la-trash"></i>
+        </a>
+    </td>
+{% endblock %}
+
+{% block script %}
+    {{ block.super }}
+
+    <script>
+        $(document).ready(function () {
+            $('#id-data').on('change', function () {
+                var data = $('#id-data').val()
+                if (data.slice(0, 4) > 1990) $('#form-search').submit();
+            })
+        })
+    </script>
+{% endblock %}
