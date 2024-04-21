@@ -40,4 +40,4 @@ class VeiculoUpdateView(VeiculoMixin, basic_views.BasicUpdateView):
 
 
 class VeiculoDeleteView(VeiculoMixin, basic_views.BasicDeleteView):
-    template_name = ''
+    pass
