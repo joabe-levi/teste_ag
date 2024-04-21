@@ -39,4 +39,4 @@ class MotoristaUpdateView(MotoristaMixin, basic_views.BasicUpdateView):
 
 
 class MotoristaDeleteView(MotoristaMixin, basic_views.BasicDeleteView):
-    template_name = ''
+    pass
