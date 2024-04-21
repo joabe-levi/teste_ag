@@ -9,6 +9,13 @@
                     {{ title_detail|default:'Detalhes' }}
                 </h3>
             </div>
+            <div class="kt-container--fluid">
+                <a href="{% url 'controle-veiculo:update' object.id %}" class="btn btn-warning btn-elevate btn-icon-sm"
+                   style="margin-top: 10px;">
+                    <i class="la la-edit"></i>
+                    Editar
+                </a>
+            </div>
         </div>
         <div class="kt-portlet__body">
             <div class="tab-content">
@@ -17,7 +24,6 @@
                         <div class="kt-widget5__item">
                             <div class="kt-widget5__content">
                                 <div class="kt-widget5__pic">
-                                    <!--                                <img class="kt-widget7__img" src="./assets/media//products/product27.jpg" alt="">-->
                                 </div>
 
                                 <div class="kt-widget5__section">
