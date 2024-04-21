@@ -10,7 +10,7 @@ class VeiculoForm(ModelForm):
 
     def clean_placa(self):
         placa = self.cleaned_data.get('placa')
-        veiculos = Veiculo.objects.filter(placa=placa)
+        veiculos = Veiculo.objects.filter(placa=placa).exclude(id=self.instance.id)
 
         if veiculos.exists():
             raise forms.ValidationError('Já existem veículos cadastrados com essa mesma placa.')
